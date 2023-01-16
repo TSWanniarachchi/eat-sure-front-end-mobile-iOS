@@ -7,18 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032C5BDE2975866B002088FB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BDD2975866B002088FB /* TabBarViewController.swift */; };
+		032C5BE029758813002088FB /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BDF29758813002088FB /* FavouriteViewController.swift */; };
+		032C5BE2297588F6002088FB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BE1297588F6002088FB /* AccountViewController.swift */; };
+		032C5BE62975899E002088FB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BE52975899E002088FB /* AuthViewController.swift */; };
+		032C5BE8297589B9002088FB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BE7297589B9002088FB /* WelcomeViewController.swift */; };
+		032C5BEA297589E5002088FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BE9297589E5002088FB /* SettingsViewController.swift */; };
+		032C5BEC297589E5002088FB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BEB297589E5002088FB /* ProfileViewController.swift */; };
+		032C5BEE297589E5002088FB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BED297589E5002088FB /* AuthManager.swift */; };
+		032C5BF0297589E5002088FB /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BEF297589E5002088FB /* APICaller.swift */; };
+		032C5BF2297589E5002088FB /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BF1297589E5002088FB /* Food.swift */; };
+		032C5BF4297589E5002088FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BF3297589E5002088FB /* User.swift */; };
+		032C5BF6297589E5002088FB /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BF5297589E5002088FB /* Favourite.swift */; };
 		038C6A372975243000F7C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A362975243000F7C65D /* AppDelegate.swift */; };
 		038C6A392975243000F7C65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A382975243000F7C65D /* SceneDelegate.swift */; };
-		038C6A3B2975243000F7C65D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A3A2975243000F7C65D /* ViewController.swift */; };
+		038C6A3B2975243000F7C65D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A3A2975243000F7C65D /* HomeViewController.swift */; };
 		038C6A402975243300F7C65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 038C6A3F2975243300F7C65D /* Assets.xcassets */; };
 		038C6A432975243300F7C65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038C6A412975243300F7C65D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		032C5BDD2975866B002088FB /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		032C5BDF29758813002088FB /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		032C5BE1297588F6002088FB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		032C5BE52975899E002088FB /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		032C5BE7297589B9002088FB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		032C5BE9297589E5002088FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		032C5BEB297589E5002088FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		032C5BED297589E5002088FB /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		032C5BEF297589E5002088FB /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		032C5BF1297589E5002088FB /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		032C5BF3297589E5002088FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		032C5BF5297589E5002088FB /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		038C6A332975243000F7C65D /* EatSure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatSure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038C6A362975243000F7C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		038C6A382975243000F7C65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		038C6A3A2975243000F7C65D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		038C6A3A2975243000F7C65D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		038C6A3F2975243300F7C65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		038C6A422975243300F7C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		038C6A442975243300F7C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +59,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032C5BE329758960002088FB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				032C5BDD2975866B002088FB /* TabBarViewController.swift */,
+				038C6A3A2975243000F7C65D /* HomeViewController.swift */,
+				032C5BDF29758813002088FB /* FavouriteViewController.swift */,
+				032C5BE1297588F6002088FB /* AccountViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		032C5BE429758975002088FB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				032C5BE52975899E002088FB /* AuthViewController.swift */,
+				032C5BE7297589B9002088FB /* WelcomeViewController.swift */,
+				032C5BE9297589E5002088FB /* SettingsViewController.swift */,
+				032C5BEB297589E5002088FB /* ProfileViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		038C6A2A2975243000F7C65D = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +114,8 @@
 		038C6A4B297537C600F7C65D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				038C6A3A2975243000F7C65D /* ViewController.swift */,
+				032C5BE429758975002088FB /* Other */,
+				032C5BE329758960002088FB /* Core */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -76,6 +123,9 @@
 		038C6A4C297537EB00F7C65D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				032C5BF1297589E5002088FB /* Food.swift */,
+				032C5BF3297589E5002088FB /* User.swift */,
+				032C5BF5297589E5002088FB /* Favourite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -90,6 +140,8 @@
 		038C6A4F2975381D00F7C65D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				032C5BED297589E5002088FB /* AuthManager.swift */,
+				032C5BEF297589E5002088FB /* APICaller.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -182,9 +234,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				038C6A3B2975243000F7C65D /* ViewController.swift in Sources */,
+				032C5BF6297589E5002088FB /* Favourite.swift in Sources */,
+				032C5BDE2975866B002088FB /* TabBarViewController.swift in Sources */,
+				032C5BE8297589B9002088FB /* WelcomeViewController.swift in Sources */,
+				032C5BEC297589E5002088FB /* ProfileViewController.swift in Sources */,
+				038C6A3B2975243000F7C65D /* HomeViewController.swift in Sources */,
+				032C5BE2297588F6002088FB /* AccountViewController.swift in Sources */,
+				032C5BE62975899E002088FB /* AuthViewController.swift in Sources */,
+				032C5BF4297589E5002088FB /* User.swift in Sources */,
 				038C6A372975243000F7C65D /* AppDelegate.swift in Sources */,
+				032C5BF0297589E5002088FB /* APICaller.swift in Sources */,
+				032C5BE029758813002088FB /* FavouriteViewController.swift in Sources */,
+				032C5BF2297589E5002088FB /* Food.swift in Sources */,
+				032C5BEE297589E5002088FB /* AuthManager.swift in Sources */,
 				038C6A392975243000F7C65D /* SceneDelegate.swift in Sources */,
+				032C5BEA297589E5002088FB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
