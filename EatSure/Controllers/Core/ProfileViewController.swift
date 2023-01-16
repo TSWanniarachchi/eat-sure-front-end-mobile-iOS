@@ -1,24 +1,18 @@
 //
-//  ViewController.swift
+//  ProfileViewController.swift
 //  EatSure
 //
-//  Created by Sachin on 1/15/23.
+//  Created by Sachin on 1/16/23.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class ProfileViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        
-        
-        
-        
     }
-
-
+    
 }
-
