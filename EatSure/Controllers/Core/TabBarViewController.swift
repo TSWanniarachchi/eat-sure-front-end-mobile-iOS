@@ -29,8 +29,8 @@ class TabBarViewController: UITabBarController {
         let nav3 = UINavigationController(rootViewController: vc3)
         
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(systemName: "magnifyingglass"), tag: 1)
-        nav3.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "music.note.list"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Favourite", image: UIImage(systemName: "heart.circle.fill"), tag: 1)
+        nav3.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
         
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
