@@ -21,7 +21,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Eat Sure"
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemBlue
         view.addSubview(signInButton)
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }
@@ -37,9 +37,18 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc func didTapSignIn(){
-        let vc = AuthViewController()
+        let vc = SignInViewController()
+        vc.completionandler = { [weak self] success in
+            DispatchQueue.main.async {
+                self?.handleSignIn(success: success)
+            }
+        }
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func handleSignIn(success: Bool){
+        // Log User in or yell at them for error
     }
     
 }

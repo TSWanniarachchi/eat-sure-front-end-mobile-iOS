@@ -19,11 +19,13 @@ class AuthViewController: UIViewController, WKNavigationDelegate {
         
         return webView
     }()
+    
+    public var completionandler:((Bool) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Sign In"
+        title = "Sign In2"
         view.backgroundColor = .systemBackground
         webView.navigationDelegate = self
         view.addSubview(webView)
