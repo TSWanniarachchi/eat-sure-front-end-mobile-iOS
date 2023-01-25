@@ -17,16 +17,19 @@
 		032C5BF4297589E5002088FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BF3297589E5002088FB /* User.swift */; };
 		032C5BF6297589E5002088FB /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BF5297589E5002088FB /* Favourite.swift */; };
 		032C5BFF297589E5002088FB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C5BFE297589E5002088FB /* TabBarViewController.swift */; };
+		03690B99297F047F00F5CD10 /* WebViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03690B98297F047F00F5CD10 /* WebViewerController.swift */; };
 		036FCC0E2975681D00AB4E49 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036FCC0D2975681D00AB4E49 /* ProfileViewController.swift */; };
 		036FCC102977463700AB4E49 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036FCC0F2977463700AB4E49 /* Extensions.swift */; };
 		036FCC142978B5B900AB4E49 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036FCC132978B5B900AB4E49 /* SignInViewController.swift */; };
 		036FCC162978B5CF00AB4E49 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036FCC152978B5CF00AB4E49 /* SignUpViewController.swift */; };
 		036FCC182978B5CF00AB4E49 /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036FCC172978B5CF00AB4E49 /* AuthHeaderView.swift */; };
+		038A81C3297EC10300114350 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A81C2297EC10200114350 /* CustomButton.swift */; };
 		038C6A372975243000F7C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A362975243000F7C65D /* AppDelegate.swift */; };
 		038C6A392975243000F7C65D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A382975243000F7C65D /* SceneDelegate.swift */; };
 		038C6A3B2975243000F7C65D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C6A3A2975243000F7C65D /* HomeViewController.swift */; };
 		038C6A402975243300F7C65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 038C6A3F2975243300F7C65D /* Assets.xcassets */; };
 		038C6A432975243300F7C65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038C6A412975243300F7C65D /* LaunchScreen.storyboard */; };
+		03D5666A2979BCD500E14CC5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D566692979BCD500E14CC5 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +43,13 @@
 		032C5BF3297589E5002088FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		032C5BF5297589E5002088FB /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
 		032C5BFE297589E5002088FB /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		03690B98297F047F00F5CD10 /* WebViewerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewerController.swift; sourceTree = "<group>"; };
 		036FCC0D2975681D00AB4E49 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		036FCC0F2977463700AB4E49 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		036FCC132978B5B900AB4E49 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		036FCC152978B5CF00AB4E49 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		036FCC172978B5CF00AB4E49 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
+		038A81C2297EC10200114350 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		038C6A332975243000F7C65D /* EatSure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatSure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038C6A362975243000F7C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		038C6A382975243000F7C65D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 		038C6A3F2975243300F7C65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		038C6A422975243300F7C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		038C6A442975243300F7C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03D566692979BCD500E14CC5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,7 @@
 				032C5BE52975899E002088FB /* AuthViewController.swift */,
 				032C5BE7297589B9002088FB /* WelcomeViewController.swift */,
 				032C5BE9297589E5002088FB /* SettingsViewController.swift */,
+				03690B98297F047F00F5CD10 /* WebViewerController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 			children = (
 				036FCC172978B5CF00AB4E49 /* AuthHeaderView.swift */,
 				038C6A412975243300F7C65D /* LaunchScreen.storyboard */,
+				03D566692979BCD500E14CC5 /* CustomTextField.swift */,
+				038A81C2297EC10200114350 /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,6 +255,8 @@
 				032C5BF6297589E5002088FB /* Favourite.swift in Sources */,
 				032C5BE8297589B9002088FB /* WelcomeViewController.swift in Sources */,
 				038C6A3B2975243000F7C65D /* HomeViewController.swift in Sources */,
+				03D5666A2979BCD500E14CC5 /* CustomTextField.swift in Sources */,
+				038A81C3297EC10300114350 /* CustomButton.swift in Sources */,
 				032C5BE62975899E002088FB /* AuthViewController.swift in Sources */,
 				036FCC0E2975681D00AB4E49 /* ProfileViewController.swift in Sources */,
 				036FCC162978B5CF00AB4E49 /* SignUpViewController.swift in Sources */,
@@ -257,6 +268,7 @@
 				036FCC102977463700AB4E49 /* Extensions.swift in Sources */,
 				032C5BF2297589E5002088FB /* Food.swift in Sources */,
 				036FCC182978B5CF00AB4E49 /* AuthHeaderView.swift in Sources */,
+				03690B99297F047F00F5CD10 /* WebViewerController.swift in Sources */,
 				036FCC142978B5B900AB4E49 /* SignInViewController.swift in Sources */,
 				032C5BEE297589E5002088FB /* AuthManager.swift in Sources */,
 				038C6A392975243000F7C65D /* SceneDelegate.swift in Sources */,
