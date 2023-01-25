@@ -9,21 +9,24 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    //  MARK: - UI Components
     private let signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.setTitle("Sign In with Eat Sure", for: .normal)
         button.setTitleColor(.blue, for: .normal)
+        button.layer.cornerRadius = 10
         return button
     }()
 
+    //  MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Eat Sure"
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemPurple
         view.addSubview(signInButton)
-        signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(didTapNavigateSignIn), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,7 +39,10 @@ class WelcomeViewController: UIViewController {
         )
     }
     
-    @objc func didTapSignIn(){
+    // MARK: - Selectors
+    @objc func didTapNavigateSignIn(){
+        print("DEBUG PRINT:", "didTapNavigateSignIn")
+        
         let vc = SignInViewController()
         vc.completionandler = { [weak self] success in
             DispatchQueue.main.async {
