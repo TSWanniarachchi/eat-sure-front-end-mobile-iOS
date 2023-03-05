@@ -9,24 +9,116 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    public var completionandler:((Bool) -> Void)?
+    //MARK: - Variables
+    var UserData = [UserModel]()
     
     //  MARK: - UI Components
-    private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Sign in your account")
-    private let  usernameField = CustomTextField(fieldType: .text, placeholder: "Username")
-    private let  passwordField = CustomTextField(fieldType: .password,  placeholder: "Password")
-    private let  signInButton = CustomButton(title: "Sign In", hasBackground: true, fontsize: .big)
-    private let  newUserButton = CustomButton(title: "New User? Create Account", hasBackground: false, fontsize: .med)
-    private let  forgotPasswordButton = CustomButton(title: "Forgot Password?", hasBackground: false, fontsize: .small)
-   
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(systemName: "questionmark")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Error"
+        label.textColor = .label
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let  usernameField = CustomTextField(fieldType: .text,
+                                                 placeholder: "Username")
+    
+    private let  passwordField = CustomTextField(fieldType: .password,
+                                                 placeholder: "Password")
+    
+    private let  forgotPasswordButton = CustomButton(buttonType: .label,
+                                                     title: "Forgot Password?",
+                                                     fontsize: .small)
+    
+    private let signInButton = CustomButton(buttonType: .secondary,
+                                            title: "Sign In",
+                                            fontsize: .big)
+    
+    private let signUpButton = CustomButton(buttonType: .primary,
+                                            title: "Sign Up",
+                                            fontsize: .big)
+    
     //  MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        view.backgroundColor = .systemBackground
         
-        self.signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
-        self.newUserButton.addTarget(self, action: #selector(didTapNewUser), for: .touchUpInside)
-        self.forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPassword), for: .touchUpInside)
+        view.addSubview(backgroundImageView)
+        view.addSubview(headerLabel)
+        view.addSubview(usernameField)
+        view.addSubview(passwordField)
+        view.addSubview(forgotPasswordButton)
+        view.addSubview(signInButton)
+        view.addSubview(signUpButton)
+        
+        setUpValues()
+        setUpConstraints()
+        
+        forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPassword), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
+    }
+    
+    //  MARK: - Setup Values
+    private func setUpValues() {
+        backgroundImageView.image = UIImage(named: "background_signin")
+        headerLabel.text = "Welcome Back"
+        usernameField.text = "Sachin"
+        passwordField.text = "test@123"
+    }
+    
+    //  MARK: - UI Setup Constraints
+    private func setUpConstraints() {
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
+            headerLabel.widthAnchor.constraint(equalToConstant: 160),
+            
+            usernameField.bottomAnchor.constraint(equalTo: passwordField.topAnchor, constant: -15),
+            usernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            usernameField.heightAnchor.constraint(equalToConstant: 55),
+            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+            
+            passwordField.bottomAnchor.constraint(equalTo: forgotPasswordButton.topAnchor, constant: -5),
+            passwordField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordField.heightAnchor.constraint(equalToConstant: 55),
+            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+            
+            forgotPasswordButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -30),
+            forgotPasswordButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 25),
+            
+            signInButton.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -10),
+            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signInButton.heightAnchor.constraint(equalToConstant: 55),
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+            
+            signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: 55),
+            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+        ])
+        
+        //        headerLabel.backgroundColor = .systemGreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,79 +126,105 @@ class SignInViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    //  MARK: - UI Setup
-    private func setupUI() {
-        title = ""
-        view.backgroundColor = .systemBackground
-        
-        self.view.addSubview(headerView)
-        self.view.addSubview(usernameField)
-        self.view.addSubview(passwordField)
-        self.view.addSubview(signInButton)
-        self.view.addSubview(newUserButton)
-        self.view.addSubview(forgotPasswordButton)
-        
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        usernameField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        newUserButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.headerView.heightAnchor.constraint(equalToConstant: 222),
-            
-            self.usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
-            self.usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.usernameField.heightAnchor.constraint(equalToConstant: 55),
-            self.usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            self.passwordField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
-            self.passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.passwordField.heightAnchor.constraint(equalToConstant: 55),
-            self.passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            self.signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
-            self.signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.signInButton.heightAnchor.constraint(equalToConstant: 55),
-            self.signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            self.newUserButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 11),
-            self.newUserButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.newUserButton.heightAnchor.constraint(equalToConstant: 44),
-            self.newUserButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            self.forgotPasswordButton.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: 6),
-            self.forgotPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.forgotPasswordButton.heightAnchor.constraint(equalToConstant: 44),
-            self.forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-        ])
+    // MARK: - Selectors
+    @objc private func didTapForgotPassword(){
+        print("DEBUG PRINT:", "didTapForgotPassword")
     }
     
-    // MARK: - Selectors
     @objc private func didTapSignIn(){
         print("DEBUG PRINT:", "didTapSignIn")
         
-        let vc = TabBarViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        let username = usernameField.text?.trimmingCharacters(in: .whitespaces)
+        let password = passwordField.text?.trimmingCharacters(in: .whitespaces)
+        
+        if (username!.isEmpty && password!.isEmpty) {
+            let alert = UIAlertController(title: "Error", message: "Required Username & Password", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if (username!.isEmpty) {
+            let alert = UIAlertController(title: "Error", message: "Required Username", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if (password!.isEmpty) {
+            let alert = UIAlertController(title: "Error", message: "Required Password", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        
+        // Create API request
+        let request = Request(endpoint: .users,
+                              pathComponents: [String(username!), String(password!)])
+        //print(request.url)
+        
+        // Call API request & get response
+        APICaller.shared.getUsers(URL: request.url) {
+            result in
+            
+            DispatchQueue.main.async {
+                
+                switch result {
+                    
+                    // start case success
+                case .success(let model):
+                    
+                    self.UserData = model
+                    if (self.UserData.count == 1) {
+                        //  print("User Have")
+                        AuthManager.isSignedIn = true
+                        AuthManager.username = username!
+                        AuthManager.password = password!
+                        
+                        let vc = TabBarViewController()
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: false, completion: nil)
+                    }
+                    else {
+                        //  print("User Nop")
+                        let alert = UIAlertController(title: "Sign In Failed",
+                                                      message: "Incorrect Username or Password",
+                                                      preferredStyle: UIAlertController.Style.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "Dismiss",
+                                                      style: UIAlertAction.Style.default,
+                                                      handler: nil))
+                        self.present(alert,
+                                     animated: true,
+                                     completion: nil)
+                    }// end case success
+                    
+                    // start case failure
+                case .failure(let error):
+                    
+                    let alert = UIAlertController(title: "Error",
+                                                  message: String(describing: error),
+                                                  preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss",
+                                                  style: UIAlertAction.Style.default,
+                                                  handler: nil))
+                    self.present(alert,
+                                 animated: true,
+                                 completion: nil) // end case failure
+                    
+                }// end switch
+                
+            }// end dispatchQueue thread
+            
+        }
     }
     
-    @objc private func didTapNewUser(){
+    @objc private func didTapSignUp(){
         print("DEBUG PRINT:", "didTapNewUser")
         
         let vc = SignUpViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
-    
-    @objc private func didTapForgotPassword(){
-        print("DEBUG PRINT:", "didTapForgotPassword")
-        
-        //let vc = ForgotPaswordController()
-        //self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }

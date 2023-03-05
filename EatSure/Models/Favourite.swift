@@ -14,8 +14,13 @@ struct FavaroiteModel: Decodable {
     let cuisinesType: String
     let mealType: String?
     let category: String?
+    let nutritionFacts: FavNutritionFacts
     let rating: Double
-    let imageUrl: String
-    let isActive: Bool
-    
+    let imageUrl: String    
+}
+
+// MARK: - NutritionFacts
+struct FavNutritionFacts: Decodable {
+    let servingSize: Int
+    let calories: Int
 }

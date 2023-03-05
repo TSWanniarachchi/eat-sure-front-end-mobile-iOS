@@ -12,16 +12,35 @@ class SignUpViewController: UIViewController {
     public var completionandler:((Bool) -> Void)?
     
     //  MARK: - UI Components
-    private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create your account")
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(systemName: "questionmark")
+        //        imageView.addoverlay()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
-    private let  fullNameField = CustomTextField(fieldType: .text, placeholder: "Full Name")
-    private let  emailField = CustomTextField(fieldType: .email, placeholder: "Email Address")
-    private let  usernameField = CustomTextField(fieldType: .text, placeholder: "Username")
-    private let  passwordField = CustomTextField(fieldType: .password,  placeholder: "Password")
-    private let  confirmedPasswordField = CustomTextField(fieldType: .password,  placeholder: "Confirmed Password")
+    private let headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Error"
+        label.textColor = .label
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
-    private let  signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontsize: .big)
-    private let  signInButton = CustomButton(title: "Already have an account? Sign In.", fontsize: .med)
+    private let  emailField = CustomTextField(fieldType: .email,
+                                              placeholder: "Email")
+    
+    private let  usernameField = CustomTextField(fieldType: .text,
+                                                 placeholder: "Username")
+    
+    private let  passwordField = CustomTextField(fieldType: .password,
+                                                 placeholder: "Password")
     
     private let termsTextView: UITextView = {
         let attributedString = NSMutableAttributedString(string: "By creating an account, you agree to our Terms & Conditions and your acknowledge that you have read our Privacy Policy.")
@@ -39,18 +58,39 @@ class SignUpViewController: UIViewController {
         tv.isEditable = false
         tv.delaysContentTouches = false
         tv.isScrollEnabled = false
-        
+        tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
-   
+    
+    private let signUpButton = CustomButton(buttonType: .secondary,
+                                            title: "Sign Up",
+                                            fontsize: .big)
+    
+    private let signInButton = CustomButton(buttonType: .primary,
+                                            title: "Sign In",
+                                            fontsize: .big)
+    
     //  MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI()
+        view.backgroundColor = .systemBackground
         
-        self.termsTextView.delegate = self
-        self.signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
-        self.signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        termsTextView.delegate = self
+        
+        view.addSubview(backgroundImageView)
+        view.addSubview(headerLabel)
+        view.addSubview(emailField)
+        view.addSubview(usernameField)
+        view.addSubview(passwordField)
+        view.addSubview(termsTextView)
+        view.addSubview(signInButton)
+        view.addSubview(signUpButton)
+        
+        setUpValues()
+        setUpConstraints()
+        
+        signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,100 +98,87 @@ class SignUpViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    //  MARK: - UI Setup
-    private func setupUI() {
-        title = ""
-        view.backgroundColor = .systemBackground
-        
-        self.view.addSubview(headerView)
-        self.view.addSubview(fullNameField)
-        self.view.addSubview(emailField)
-        self.view.addSubview(usernameField)
-        self.view.addSubview(passwordField)
-        self.view.addSubview(confirmedPasswordField)
-        self.view.addSubview(signUpButton)
-        self.view.addSubview(termsTextView)
-        self.view.addSubview(signInButton)
-        
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        fullNameField.translatesAutoresizingMaskIntoConstraints = false
-        emailField.translatesAutoresizingMaskIntoConstraints = false
-        usernameField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        confirmedPasswordField.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        termsTextView.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
+    //  MARK: - Setup Values
+    private func setUpValues() {
+        backgroundImageView.image = UIImage(named: "background_signup")
+        headerLabel.text = "Create Account"
+    }
+    
+    //  MARK: - UI Setup Constraints
+    private func setUpConstraints() {
         
         NSLayoutConstraint.activate([
-            self.headerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.headerView.heightAnchor.constraint(equalToConstant: 222),
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            self.fullNameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
-            self.fullNameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.fullNameField.heightAnchor.constraint(equalToConstant: 55),
-            self.fullNameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25),
+            headerLabel.widthAnchor.constraint(equalToConstant: 160),
             
-            self.emailField.topAnchor.constraint(equalTo: fullNameField.bottomAnchor, constant: 22),
-            self.emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.emailField.heightAnchor.constraint(equalToConstant: 55),
-            self.emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.bottomAnchor.constraint(equalTo: usernameField.topAnchor, constant: -10),
+            emailField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emailField.heightAnchor.constraint(equalToConstant: 50),
+            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
             
-            self.usernameField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
-            self.usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.usernameField.heightAnchor.constraint(equalToConstant: 55),
-            self.usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            usernameField.bottomAnchor.constraint(equalTo: passwordField.topAnchor, constant: -10),
+            usernameField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            usernameField.heightAnchor.constraint(equalToConstant: 50),
+            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
             
-            self.passwordField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
-            self.passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.passwordField.heightAnchor.constraint(equalToConstant: 55),
-            self.passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            passwordField.bottomAnchor.constraint(equalTo: termsTextView.topAnchor, constant: 2),
+            passwordField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordField.heightAnchor.constraint(equalToConstant: 50),
+            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
             
-            self.confirmedPasswordField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
-            self.confirmedPasswordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.confirmedPasswordField.heightAnchor.constraint(equalToConstant: 55),
-            self.confirmedPasswordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            termsTextView.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -15),
+            termsTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
-            self.signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.signUpButton.heightAnchor.constraint(equalToConstant: 55),
-            self.signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signUpButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -10),
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signUpButton.heightAnchor.constraint(equalToConstant: 55),
+            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
             
-            self.termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 6),
-            self.termsTextView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signInButton.heightAnchor.constraint(equalToConstant: 55),
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
             
-            self.signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 11),
-            self.signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.signInButton.heightAnchor.constraint(equalToConstant: 44),
-            self.signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
+        
+//        termsTextView.backgroundColor = .systemGreen
     }
     
     // MARK: - Selectors
     @objc private func didTapSignUp(){
-        print("DEBUG PRINT:", "page: SignUpViewController, func: didTapSignUp")
+        print("DEBUG PRINT:", "didTapSignUp")
     }
     
     @objc private func didTapSignIn(){
-        print("DEBUG PRINT:", "page: SignUpViewController, func:didTapSignIn")
+        print("DEBUG PRINT:", "didTapSignIn")
         
         let vc = SignInViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
+    
 }
 
-extension SignUpViewController: UITextViewDelegate{
+
+// MARK: - UITextView
+extension SignUpViewController: UITextViewDelegate {
     
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+    func textView(_ textView: UITextView,
+                  shouldInteractWith URL: URL,
+                  in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "terms" {
             self.showWebViewerController(with: "https://policies.google.com/terms?hl=en-US")
         }else if URL.scheme == "privacy"{
             self.showWebViewerController(with: "https://policies.google.com/privacy?hl=en-US")
         }
-        
         return true
     }
     
@@ -166,4 +193,5 @@ extension SignUpViewController: UITextViewDelegate{
         textView.selectedTextRange = nil
         textView.delegate = self
     }
+    
 }
